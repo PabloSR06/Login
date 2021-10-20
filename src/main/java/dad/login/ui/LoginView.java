@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -14,7 +15,7 @@ public class LoginView extends VBox{
 	
 	
 	private TextField userField;
-	private TextField passwordField;
+	private PasswordField passwordField;
 	
 	private CheckBox lapdCheckBox;
 	
@@ -26,7 +27,7 @@ public class LoginView extends VBox{
 		
 		userField = new TextField();
 		userField.setPromptText("Nombre de usuario");
-		passwordField = new TextField();
+		passwordField = new PasswordField();
 		passwordField.setPromptText("Constraseña de usuario");
 		
 		lapdCheckBox = new CheckBox();
@@ -56,7 +57,7 @@ public class LoginView extends VBox{
 		return userField;
 	}
 
-	public TextField getPasswordField() {
+	public PasswordField getPasswordField() {
 		return passwordField;
 	}
 
