@@ -8,7 +8,7 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception {
 		
-		boolean useLdap = true;
+		boolean useLdap = false;
 		
 		AuthService auth = useLdap ? new LdapAuthService() : new FileAuthService();
 		System.out.println("Chuck Norris    : " + auth.login("cnorris", "patada"));
