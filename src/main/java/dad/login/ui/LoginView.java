@@ -43,7 +43,7 @@ public class LoginView extends VBox{
 		formPane.addRow(0, new Label("Usuario: "), userField);
 		formPane.addRow(1, new Label("Contraseña: "), passwordField);
 		
-		HBox checkBox = new HBox(5, lapdCheckBox, new Label("lapd: "));
+		HBox checkBox = new HBox(5, lapdCheckBox, new Label("Usar LDAP: "));
 		HBox buttonBox = new HBox(5, aceptarButton, cancelarButton);
 		
 		setSpacing(5);
