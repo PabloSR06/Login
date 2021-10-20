@@ -1,3 +1,4 @@
+package dad.login.app;
 import dad.login.ui.LoginController;
 import dad.login.ui.LoginView;
 import javafx.application.Application;
