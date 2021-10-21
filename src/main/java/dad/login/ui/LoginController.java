@@ -52,6 +52,7 @@ public class LoginController {
 			correcto = auth.login(model.getUser(), model.getPassword());
 		} catch (Exception e1) {
 			e1.printStackTrace();
+			System.out.println("Eso es que falta nombre o contraseña");
 		}
 		if (correcto == true) {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -64,7 +65,7 @@ public class LoginController {
 			alert.setTitle("Iniciar Sesion");
 			alert.setHeaderText("Acceso denegado");
 			alert.setContentText("El usuario y/o contraseña no son validos");
-			model.setPassword("");
+			//model.setPassword("");
 
 			alert.showAndWait();
 		}
