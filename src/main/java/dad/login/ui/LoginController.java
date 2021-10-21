@@ -8,11 +8,14 @@ import dad.login.auth.AuthService;
 import dad.login.auth.FileAuthService;
 import dad.login.auth.LdapAuthService;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 
 public class LoginController {
 
@@ -21,8 +24,13 @@ public class LoginController {
 	
 
 	public LoginController() {
+		model.userProperty().bind(view.getUserField().textProperty());
+		model.passwordProperty().bind(view.getPasswordField().textProperty());
+		model.ldapProperty().bind(view.getLapdCheckBox().selectedProperty());
+
 		view.getAceptarButton().setOnAction(e -> onAceptarAction(e));
 		view.getCancelarButton().setOnAction(e -> onCancelarAction(e));
+		
 	}	
 	
 
@@ -33,12 +41,9 @@ public class LoginController {
 
 
 	private void onAceptarAction(ActionEvent e){
-		model.setUser(view.getUserField().getText());
-		model.setPassword(view.getPasswordField().getText());
-		BooleanProperty useLdap =  view.getLapdCheckBox().selectedProperty();
 		
 		Boolean correcto = false;
-		AuthService auth = useLdap.get() ? new LdapAuthService() : new FileAuthService();
+		AuthService auth = model.isLdap() ? new LdapAuthService() : new FileAuthService();
 		try {
 			correcto = auth.login(model.getUser(), model.getPassword());
 		} catch (Exception e1) {
