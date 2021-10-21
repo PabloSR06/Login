@@ -24,10 +24,14 @@ public class LoginController {
 	
 
 	public LoginController() {
-		model.userProperty().bind(view.getUserField().textProperty());
-		model.passwordProperty().bind(view.getPasswordField().textProperty());
-		model.ldapProperty().bind(view.getLapdCheckBox().selectedProperty());
-
+//		model.userProperty().bind(view.getUserField().textProperty());
+//		model.passwordProperty().bind(view.getPasswordField().textProperty());
+//		model.ldapProperty().bind(view.getLapdCheckBox().selectedProperty());
+		
+		view.getUserField().textProperty().bindBidirectional(model.userProperty());
+		view.getPasswordField().textProperty().bindBidirectional(model.passwordProperty());
+		view.getLapdCheckBox().selectedProperty().bindBidirectional(model.ldapProperty());
+		
 		view.getAceptarButton().setOnAction(e -> onAceptarAction(e));
 		view.getCancelarButton().setOnAction(e -> onCancelarAction(e));
 		
@@ -60,13 +64,11 @@ public class LoginController {
 			alert.setTitle("Iniciar Sesion");
 			alert.setHeaderText("Acceso denegado");
 			alert.setContentText("El usuario y/o contraseña no son validos");
+			model.setPassword("");
 
 			alert.showAndWait();
 		}
-		
-		
-		
-		
+
 	}
 
 	public LoginModel getModel() {
